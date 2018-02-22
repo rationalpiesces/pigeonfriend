@@ -1,0 +1,14 @@
+{
+  "name": "smarthome",
+  "version": "1.0.0",
+  "description": "bird feeder alexa skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "alexa turn on bird feeder"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^2.15.3"
+  }
+}
