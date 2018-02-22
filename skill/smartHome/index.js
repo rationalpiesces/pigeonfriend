@@ -17,8 +17,6 @@ exports.handler = function (request, context) {
         }
     }
 
-
-
     /*
      * handles discovery messange from alexa
      */
@@ -121,7 +119,30 @@ exports.handler = function (request, context) {
                 })
             })
 
-        }
+        } else {
+            powerResult = "OFF";
+            var contextResult = {
+                "properties": [{
+                    "namespace": "Alexa.PowerController",
+                    "name": "powerState",
+                    "value": powerResult,
+                    "timeOfSample": "2017-09-03T16:20:50.52Z", //retrieve from result.
+                    "uncertaintyInMilliseconds": 50
+                }]
+            };
+            var responseHeader = request.directive.header;
+            responseHeader.name = "Alexa.Response";
+            responseHeader.messageId = responseHeader.messageId + "-R";
+            var response = {
+                context: contextResult,
+                event: {
+                    header: responseHeader
+                },
+                payload: {}
 
+            };
+            log("DEBUG", "Alexa.PowerController ", JSON.stringify(response));
+            context.succeed(response);
+        }
     }
 };
