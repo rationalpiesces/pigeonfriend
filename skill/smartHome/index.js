@@ -28,7 +28,7 @@ exports.handler = function (request, context) {
                 "friendlyName": "Bird Feeder",
                 "description": "device to feed birds in the park",
                 "displayCategories": [
-                    "ACTIVITY_TRIGGER"
+                    "SWITCH"
                 ],
                 "cookie": {},
                 "capabilities": [{
@@ -108,11 +108,13 @@ exports.handler = function (request, context) {
                     var response = {
                         context: contextResult,
                         event: {
-                            header: responseHeader
+                            header: responseHeader,     
+                            endpoint: request.directive.endpoint,                       
+                            payload: {}
                         },
-                        payload: {}
-
                     };
+                    response.event.header.name = "Response";
+                    response.event.header.namespace = "Alexa";
                     log("DEBUG", "Alexa.PowerController ", JSON.stringify(response));
                     context.succeed(response);
 
@@ -136,11 +138,13 @@ exports.handler = function (request, context) {
             var response = {
                 context: contextResult,
                 event: {
-                    header: responseHeader
+                    header: responseHeader,     
+                    endpoint: request.directive.endpoint,                       
+                    payload: {}
                 },
-                payload: {}
-
             };
+            response.event.header.name = "Response";
+            response.event.header.namespace = "Alexa";
             log("DEBUG", "Alexa.PowerController ", JSON.stringify(response));
             context.succeed(response);
         }

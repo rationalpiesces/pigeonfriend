@@ -185,7 +185,7 @@ void modem_sleep_mode() {
 
 /*
  * wakeup modem from sleep
- * I used manual sending of some AT commands
+ * Sending some AT commands manually
  */
 void modem_wake_up() {
   Serial.println("waking up the modem");
@@ -230,7 +230,7 @@ void loop() {
         if (mqttConnect()) {
           lastReconnectAttempt = millis();
           is_data_received = false;
-          //check retained message received after one second
+          //check retained message received in one second
           mqtt.publish(topic_wakeup, String(analogRead(ADC_PIN)).c_str());
           wait_publish.setTimeout(1000, check_data_received);
         } else {
