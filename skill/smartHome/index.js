@@ -5,6 +5,7 @@ var mqtt = require('mqtt') // used to send commands to broker
 
 /*
  * Main handler of the skill
+ * 
  */
 exports.handler = function (request, context) {
     if (request.directive.header.namespace === 'Alexa.Discovery' && request.directive.header.name === 'Discover') {
@@ -19,6 +20,7 @@ exports.handler = function (request, context) {
 
     /*
      * handles discovery messange from alexa
+     * 
      */
     function handleDiscovery(request, context) {
         var payload = {
