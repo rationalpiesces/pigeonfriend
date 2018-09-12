@@ -4,7 +4,7 @@
 var mqtt = require('mqtt') // used to send commands to broker
 
 /*
- * Main handler
+ * Main handler of the skill
  */
 exports.handler = function (request, context) {
     if (request.directive.header.namespace === 'Alexa.Discovery' && request.directive.header.name === 'Discover') {
